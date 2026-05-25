@@ -1,43 +1,39 @@
 public class Polynomial {
-    private double[] coefficients;
-
+    private double[] CC;
     public Polynomial() {
-        coefficients = new double[1];
-        coefficients[0] = 0;
+        CC = new double[1];
+        CC[0] = 0;
     }
-
     public Polynomial(double[] coeffs) {
-        coefficients = new double[coeffs.length];
+        CC = new double[coeffs.length];
         for (int i = 0; i < coeffs.length; i++) {
-            coefficients[i] = coeffs[i];
+            CC[i] = coeffs[i];
         }
     }
-
     public Polynomial add(Polynomial other) {
-        int maxLen = Math.max(coefficients.length, other.coefficients.length);
-        double[] result = new double[maxLen];
+        int maxLen = Math.max(CC.length, other.CC.length);
+        double[] rs = new double[maxLen];
 
-        for (int i = 0; i < coefficients.length; i++) {
-            result[i] += coefficients[i];
+        for (int i = 0; i < CC.length; i++) {
+            rs[i] += CC[i];
         }
 
-        for (int i = 0; i < other.coefficients.length; i++) {
-            result[i] += other.coefficients[i];
+        for (int i = 0; i < other.CC.length; i++) {
+            rs[i] += other.CC[i];
         }
-
-        return new Polynomial(result);
+        return new Polynomial(rs);
     }
 
     public double evaluate(double x) {
-        double result = 0;
+        double rs = 0;
         double xPower = 1;
 
-        for (int i = 0; i < coefficients.length; i++) {
-            result += coefficients[i] * xPower;
+        for (int i = 0; i < CC.length; i++) {
+            rs += CC[i] * xPower;
             xPower *= x;
         }
 
-        return result;
+        return rs;
     }
 
     public boolean hasRoot(double x) {
